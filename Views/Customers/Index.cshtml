@@ -1,0 +1,19 @@
+@model vidly.ViewModels.CustomersViewModel
+@{
+	ViewData["Title"] = "Customers";
+}
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Customers.Count == 0)
+{
+	<p>No one has rented this movie before.</p>
+}
+else
+{
+	<ul>
+		@foreach (var customer in Model.Customers)
+		{
+      <li><a asp-area="" asp-controller="Customers" asp-action="Details" asp-route-id="@customer.Id">@customer.Name</a></li>
+		}
+</ul>
+}
